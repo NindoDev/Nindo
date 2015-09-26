@@ -13,6 +13,6 @@
 
     <dimen name="nav_header_text_margin_left">16dp</dimen>
     2
-    <dimen name="lollipop_fab_margin_right">0dp</dimen>
-    <dimen name="lollipop_fab_margin_bottom">0dp</dimen>
+    <dimen name="lollipop_fab_margin_right">16dp</dimen>
+    <dimen name="lollipop_fab_margin_bottom">16dp</dimen>
 </resources>
