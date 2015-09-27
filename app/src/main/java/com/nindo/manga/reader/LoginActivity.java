@@ -12,11 +12,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
     FloatingActionButton fabBtn;
-    CoordinatorLayout rootLayout;
+    RelativeLayout rootLayout;
 
 
     @Override
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initInstances() {
-        rootLayout = (CoordinatorLayout) findViewById(R.id.loginRootLayout);
+        rootLayout = (RelativeLayout) findViewById(R.id.loginRootLayout);
         fabBtn = (FloatingActionButton) findViewById(R.id.loginFabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
