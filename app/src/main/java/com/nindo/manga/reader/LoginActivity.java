@@ -17,7 +17,7 @@ import android.widget.RelativeLayout;
 public class LoginActivity extends AppCompatActivity {
 
     FloatingActionButton fabBtn;
-    RelativeLayout rootLayout;
+    CoordinatorLayout rootLayout;
 
 
     @Override
@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initInstances() {
-        rootLayout = (RelativeLayout) findViewById(R.id.loginRootLayout);
+        rootLayout = (CoordinatorLayout) findViewById(R.id.loginRootLayout);
         fabBtn = (FloatingActionButton) findViewById(R.id.loginFabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
