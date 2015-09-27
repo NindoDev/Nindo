@@ -9,4 +9,9 @@
     <string name="txt_other">Other</string>
     <string name="txt_yo_yo">Test</string>
     <string name="title_activity_code_lab">Nindo</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password_hint">********</string>
+    <string name="email_id_hint">Email-id</string>
+    <string name="login">Login</string>
 </resources>

@@ -15,8 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_code_lab);
+        setContentView(R.layout.activity_home);
 
         initInstances();
     }
@@ -49,8 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Popular"));
         tabLayout.addTab(tabLayout.newTab().setText("New"));
 
-        rootLayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
-        fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
+        rootLayout = (CoordinatorLayout) findViewById(R.id.homeRootLayout);
+        fabBtn = (FloatingActionButton) findViewById(R.id.homeFabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
