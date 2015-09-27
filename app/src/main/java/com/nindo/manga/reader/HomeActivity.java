@@ -47,8 +47,8 @@ public class HomeActivity extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Popular"));
         tabLayout.addTab(tabLayout.newTab().setText("New"));
 
-        rootLayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
-        fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
+        rootLayout = (CoordinatorLayout) findViewById(R.id.homeRootLayout);
+        fabBtn = (FloatingActionButton) findViewById(R.id.homeFabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
