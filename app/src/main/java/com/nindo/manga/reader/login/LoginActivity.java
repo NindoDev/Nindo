@@ -1,18 +1,18 @@
-package com.nindo.manga.reader;
+package com.nindo.manga.reader.login;
 
 /**
  * Created by NindoDev on 9/26/2015.
  */
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
+
+import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.home.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

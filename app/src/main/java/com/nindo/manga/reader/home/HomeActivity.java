@@ -1,4 +1,4 @@
-package com.nindo.manga.reader;
+package com.nindo.manga.reader.home;
 
 /**
  * Created by NindoDev on 9/26/2015.
@@ -7,6 +7,7 @@ package com.nindo.manga.reader;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +22,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.nindo.manga.reader.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +60,8 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Snackbar.make(view, "This is a Snackbar", Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
             }
         });
 
