@@ -38,12 +38,12 @@ public class MangaDetailsActivity extends AppCompatActivity {
 
     private void loadBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        imageView.setImageResource(R.drawable.no_image_found_cream);
+        imageView.setImageResource(R.drawable.no_image_found_grey);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_home, menu);
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
         return true;
     }
 }
