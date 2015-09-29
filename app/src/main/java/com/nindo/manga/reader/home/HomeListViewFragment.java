@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.manga_details.MangaDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,7 +102,16 @@ public class HomeListViewFragment extends Fragment {
             holder.mBoundString = mValues.get(position);
             holder.mTextView.setText(mValues.get(position));
             holder.mImageView.setImageResource(R.drawable.no_image_found_grey);
+            holder.mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Context context = v.getContext();
+                    Intent intent = new Intent(context, MangaDetailsActivity.class);
+                    intent.putExtra(MangaDetailsActivity.EXTRA_NAME, holder.mBoundString);
 
+                    context.startActivity(intent);
+                }
+            });
         }
 
         @Override
