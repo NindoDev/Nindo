@@ -24,7 +24,7 @@ import java.util.Random;
  */
 public class HomeListViewFragment extends Fragment {
 
-    ArrayList<String> mangaName = new ArrayList<String>(Arrays.asList("Test 1", "Test 2", "Test 3", "Test 4", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9", "Test 10"));
+    ArrayList<String> mangaName = new ArrayList<String>(Arrays.asList("Test 1", "Test 2", "Test 3", "Test 4", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9", "Test 10","Test 11", "Test 12", "Test 13", "Test 14", "Test 15", "Test 16", "Test 17", "Test 18", "Test 19", "Test 20"));
 
 
     @Override
@@ -98,6 +98,8 @@ public class HomeListViewFragment extends Fragment {
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mBoundString = mValues.get(position);
             holder.mTextView.setText(mValues.get(position));
+            holder.mImageView.setImageResource(R.drawable.no_image_found_grey);
+
         }
 
         @Override
