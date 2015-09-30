@@ -6,6 +6,11 @@ package com.nindo.manga.reader.data_model;
 public class Manga {
     private int mangaId;
     private String mangaTitle;
+
+    public int getMangaImage() {
+        return mangaImage;
+    }
+
     private int mangaImage;
     private String mangaDescription;
 

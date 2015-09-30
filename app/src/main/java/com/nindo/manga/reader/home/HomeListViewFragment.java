@@ -2,6 +2,9 @@ package com.nindo.manga.reader.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -15,7 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.cache_bitmaps.ImageDetailActivity;
+import com.nindo.manga.reader.data_model.Manga;
 import com.nindo.manga.reader.manga_details.MangaDetailsActivity;
+import com.nindo.manga.reader.network_request.RequestManagaDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,21 +32,30 @@ import java.util.Random;
  * Created by NindoDev on 9/27/2015.
  */
 public class HomeListViewFragment extends Fragment {
-
-    ArrayList<String> mangaName = new ArrayList<String>(Arrays.asList("Test 1", "Test 2", "Test 3", "Test 4", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9", "Test 10","Test 11", "Test 12", "Test 13", "Test 14", "Test 15", "Test 16", "Test 17", "Test 18", "Test 19", "Test 20"));
-
+    public static Resources res;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.list_view, container, false);
         setupRecyclerView(rv);
+        res = getResources();
         return rv;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+//        if (ImageDetailActivity.class.isInstance(getActivity())) {
+//            final int resId = ImageDetailActivity.imageResIds[mImageNum];
+//            // Call out to ImageDetailActivity to load the bitmap in a background thread
+//            ((ImageDetailActivity) getActivity()).loadBitmap(resId, mImageView);
+//        }
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), mangaName));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), RequestManagaDetails.getMangaList()));
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -57,7 +72,7 @@ public class HomeListViewFragment extends Fragment {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mValues;
+        private List<Manga> mValues;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
@@ -79,14 +94,14 @@ public class HomeListViewFragment extends Fragment {
             }
         }
 
-        public String getValueAt(int position) {
-            return mValues.get(position);
-        }
+//        public String getValueAt(int position) {
+//            return mValues.get(position);
+//        }
 
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
+        public SimpleStringRecyclerViewAdapter(Context context, List<Manga> mangaItems) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mBackground = mTypedValue.resourceId;
-            mValues = items;
+            mValues = mangaItems;
         }
 
         @Override
@@ -99,16 +114,16 @@ public class HomeListViewFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mBoundString = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
-            holder.mImageView.setImageResource(R.drawable.no_image_found_grey);
+            holder.mBoundString = mValues.get(position).getMangaTitle();
+            holder.mTextView.setText(mValues.get(position).getMangaTitle());
+            // holder.mImageView.setImageResource(mValues.get(position).getMangaImage());
+            holder.mImageView.setImageBitmap(decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100));
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, MangaDetailsActivity.class);
                     intent.putExtra(MangaDetailsActivity.EXTRA_NAME, holder.mBoundString);
-
                     context.startActivity(intent);
                 }
             });
@@ -118,5 +133,44 @@ public class HomeListViewFragment extends Fragment {
         public int getItemCount() {
             return mValues.size();
         }
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }
