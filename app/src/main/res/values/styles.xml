@@ -21,4 +21,12 @@
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="MyTextAppearance" parent="android:TextAppearance">
+        <item name="android:background">#80000000</item>
+    </style>
+
+
+
+
 </resources>

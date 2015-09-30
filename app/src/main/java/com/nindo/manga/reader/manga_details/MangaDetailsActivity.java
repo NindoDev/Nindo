@@ -25,7 +25,6 @@ import java.util.List;
 public class MangaDetailsActivity extends AppCompatActivity {
 
     public static final String EXTRA_NAME = "manga_name";
-    public static final String EXTRA_IMAGE = "manga_image";
 
 
     @Override
@@ -34,18 +33,19 @@ public class MangaDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.manga_details_activity);
 
         Intent intent = getIntent();
-        final String mangaName = intent.getStringExtra(EXTRA_NAME);
-        final int position = intent.getIntExtra(EXTRA_IMAGE, 0);
+        final int position = intent.getIntExtra(EXTRA_NAME, 0);
         List<Manga> mangaList = RequestManagaDetails.getMangaList();
         final Bitmap mangaImage =  ImageDetailActivity.decodeSampledBitmapFromResource(getResources(), mangaList.get(position).getMangaImage(), 100, 100);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final String mangaName = mangaList.get(position).getMangaTitle();
+
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(mangaName);
-
+       // collapsingToolbar.setCollapsedTitleTextAppearance(R.style.MyTextAppearance);
         loadBackdrop( mangaImage);
     }
 
