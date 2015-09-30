@@ -43,15 +43,7 @@ public class HomeListViewFragment extends Fragment {
         return rv;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        if (ImageDetailActivity.class.isInstance(getActivity())) {
-//            final int resId = ImageDetailActivity.imageResIds[mImageNum];
-//            // Call out to ImageDetailActivity to load the bitmap in a background thread
-//            ((ImageDetailActivity) getActivity()).loadBitmap(resId, mImageView);
-//        }
-    }
+
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
@@ -72,14 +64,15 @@ public class HomeListViewFragment extends Fragment {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<Manga> mValues;
+        public List<Manga> mValues;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
-
+            public Bitmap mImage;
             public final View mView;
             public final ImageView mImageView;
             public final TextView mTextView;
+
 
             public ViewHolder(View view) {
                 super(view);
@@ -113,17 +106,18 @@ public class HomeListViewFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             holder.mBoundString = mValues.get(position).getMangaTitle();
+            holder.mImage = ImageDetailActivity.decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100);
             holder.mTextView.setText(mValues.get(position).getMangaTitle());
-            // holder.mImageView.setImageResource(mValues.get(position).getMangaImage());
-            holder.mImageView.setImageBitmap(decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100));
+            holder.mImageView.setImageBitmap(holder.mImage);
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, MangaDetailsActivity.class);
                     intent.putExtra(MangaDetailsActivity.EXTRA_NAME, holder.mBoundString);
+                    intent.putExtra(MangaDetailsActivity.EXTRA_NAME, position);
                     context.startActivity(intent);
                 }
             });
@@ -135,42 +129,5 @@ public class HomeListViewFragment extends Fragment {
         }
     }
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
 
-        // First decode with inJustDecodeBounds=true to check dimensions
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
-
-        // Calculate inSampleSize
-        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
-
-        // Decode bitmap with inSampleSize set
-        options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
-    }
-
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
 }

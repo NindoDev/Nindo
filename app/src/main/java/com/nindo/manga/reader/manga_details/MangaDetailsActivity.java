@@ -1,6 +1,7 @@
 package com.nindo.manga.reader.manga_details;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.GravityCompat;
@@ -11,13 +12,21 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.cache_bitmaps.ImageDetailActivity;
+import com.nindo.manga.reader.data_model.Manga;
+import com.nindo.manga.reader.home.HomeListViewFragment;
+import com.nindo.manga.reader.network_request.RequestManagaDetails;
+
+import java.util.List;
 
 /**
  * Created by NindoDev on 9/29/2015.
  */
 public class MangaDetailsActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "manga_details";
+    public static final String EXTRA_NAME = "manga_name";
+    public static final String EXTRA_IMAGE = "manga_image";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +35,9 @@ public class MangaDetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String mangaName = intent.getStringExtra(EXTRA_NAME);
-
+        final int position = intent.getIntExtra(EXTRA_IMAGE, 0);
+        List<Manga> mangaList = RequestManagaDetails.getMangaList();
+        final Bitmap mangaImage =  ImageDetailActivity.decodeSampledBitmapFromResource(getResources(), mangaList.get(position).getMangaImage(), 100, 100);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,12 +46,12 @@ public class MangaDetailsActivity extends AppCompatActivity {
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(mangaName);
 
-        loadBackdrop();
+        loadBackdrop( mangaImage);
     }
 
-    private void loadBackdrop() {
+    private void loadBackdrop(Bitmap mangaImage) {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        imageView.setImageResource(R.drawable.no_image_found_grey);
+        imageView.setImageBitmap(mangaImage);
     }
 
     @Override

@@ -8,19 +8,38 @@
     android:paddingTop="8dp">
 
 
-    <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:layout_marginRight="16dp"
-        android:adjustViewBounds="true" />
 
-    <TextView
-        android:id="@android:id/text1"
-        android:layout_marginRight="20dp"
-        android:textSize="15dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_marginBottom="3dp" >
+
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/no_image_found_grey"
+                android:layout_height="230dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true" />
+
+            <TextView
+                android:id="@android:id/text1"
+                android:layout_width="match_parent"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#80000000"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Manga Title"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:textColor="#fff" />
+    </RelativeLayout>
 
 </LinearLayout>
