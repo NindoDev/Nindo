@@ -4,9 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">#6a5750</item>
-        <item name="colorPrimaryDark">#30231d</item>
-        <item name="colorAccent">#b5a397</item>
+        <item name="colorPrimary">#795548</item>
+        <item name="colorPrimaryDark">#5D4037</item>
+        <item name="colorAccent">#9E9E9E</item>
     </style>
 
     <style name="AppTheme.WithoutActionBar">
