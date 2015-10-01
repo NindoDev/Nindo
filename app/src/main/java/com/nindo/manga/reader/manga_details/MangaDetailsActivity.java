@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.nindo.manga.reader.R;
@@ -52,6 +53,12 @@ public class MangaDetailsActivity extends AppCompatActivity {
     private void loadBackdrop(Bitmap mangaImage) {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
         imageView.setImageBitmap(mangaImage);
+//        WebView view = (WebView) findViewById(R.id.mangaContent);
+//        String text;
+//        text = "<html><body><p align=\"justify\">";
+//        text+= getResources().getString(R.string.manga_desc);
+//        text+= "</p></body></html>";
+//        view.loadData(text, "text/html", "utf-8");
     }
 
     @Override
