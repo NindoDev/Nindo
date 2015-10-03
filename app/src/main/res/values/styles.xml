@@ -4,9 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">#e67e22</item>
-        <item name="colorPrimaryDark">#d35400</item>
-        <item name="colorAccent">#00BCD4</item>
+        <item name="colorPrimary">#795548</item>
+        <item name="colorPrimaryDark">#5D4037</item>
+        <item name="colorAccent">#9E9E9E</item>
     </style>
 
     <style name="AppTheme.WithoutActionBar">
@@ -21,4 +21,12 @@
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+    <style name="MyTextAppearance" parent="android:TextAppearance">
+        <item name="android:background">#80000000</item>
+    </style>
+
+
+
+
 </resources>

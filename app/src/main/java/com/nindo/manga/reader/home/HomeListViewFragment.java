@@ -2,6 +2,9 @@ package com.nindo.manga.reader.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -15,7 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.cache_bitmaps.ImageDetailActivity;
+import com.nindo.manga.reader.data_model.Manga;
 import com.nindo.manga.reader.manga_details.MangaDetailsActivity;
+import com.nindo.manga.reader.network_request.RequestManagaDetails;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,21 +32,22 @@ import java.util.Random;
  * Created by NindoDev on 9/27/2015.
  */
 public class HomeListViewFragment extends Fragment {
-
-    ArrayList<String> mangaName = new ArrayList<String>(Arrays.asList("Test 1", "Test 2", "Test 3", "Test 4", "Test 5", "Test 6", "Test 7", "Test 8", "Test 9", "Test 10","Test 11", "Test 12", "Test 13", "Test 14", "Test 15", "Test 16", "Test 17", "Test 18", "Test 19", "Test 20"));
-
+    public static Resources res;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.list_view, container, false);
         setupRecyclerView(rv);
+        res = getResources();
         return rv;
     }
 
+
+
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), mangaName));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(getActivity(), RequestManagaDetails.getMangaList()));
     }
 
     private List<String> getRandomSublist(String[] array, int amount) {
@@ -57,14 +64,15 @@ public class HomeListViewFragment extends Fragment {
 
         private final TypedValue mTypedValue = new TypedValue();
         private int mBackground;
-        private List<String> mValues;
+        public List<Manga> mValues;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
             public String mBoundString;
-
+            public Bitmap mImage;
             public final View mView;
             public final ImageView mImageView;
             public final TextView mTextView;
+
 
             public ViewHolder(View view) {
                 super(view);
@@ -79,14 +87,14 @@ public class HomeListViewFragment extends Fragment {
             }
         }
 
-        public String getValueAt(int position) {
-            return mValues.get(position);
-        }
+//        public String getValueAt(int position) {
+//            return mValues.get(position);
+//        }
 
-        public SimpleStringRecyclerViewAdapter(Context context, List<String> items) {
+        public SimpleStringRecyclerViewAdapter(Context context, List<Manga> mangaItems) {
             context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
             mBackground = mTypedValue.resourceId;
-            mValues = items;
+            mValues = mangaItems;
         }
 
         @Override
@@ -98,17 +106,17 @@ public class HomeListViewFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mBoundString = mValues.get(position);
-            holder.mTextView.setText(mValues.get(position));
-            holder.mImageView.setImageResource(R.drawable.no_image_found_grey);
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
+
+            holder.mImage = ImageDetailActivity.decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100);
+            holder.mTextView.setText(mValues.get(position).getMangaTitle());
+            holder.mImageView.setImageBitmap(holder.mImage);
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, MangaDetailsActivity.class);
-                    intent.putExtra(MangaDetailsActivity.EXTRA_NAME, holder.mBoundString);
-
+                    intent.putExtra(MangaDetailsActivity.EXTRA_NAME, position);
                     context.startActivity(intent);
                 }
             });
@@ -119,4 +127,6 @@ public class HomeListViewFragment extends Fragment {
             return mValues.size();
         }
     }
+
+
 }

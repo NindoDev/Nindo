@@ -1,6 +1,7 @@
 package com.nindo.manga.reader.manga_details;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.GravityCompat;
@@ -8,16 +9,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.cache_bitmaps.ImageDetailActivity;
+import com.nindo.manga.reader.data_model.Manga;
+import com.nindo.manga.reader.home.HomeListViewFragment;
+import com.nindo.manga.reader.network_request.RequestManagaDetails;
+
+import java.util.List;
 
 /**
  * Created by NindoDev on 9/29/2015.
  */
 public class MangaDetailsActivity extends AppCompatActivity {
 
-    public static final String EXTRA_NAME = "manga_details";
+    public static final String EXTRA_NAME = "manga_name";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,22 +34,31 @@ public class MangaDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.manga_details_activity);
 
         Intent intent = getIntent();
-        final String mangaName = intent.getStringExtra(EXTRA_NAME);
-
+        final int position = intent.getIntExtra(EXTRA_NAME, 0);
+        List<Manga> mangaList = RequestManagaDetails.getMangaList();
+        final Bitmap mangaImage =  ImageDetailActivity.decodeSampledBitmapFromResource(getResources(), mangaList.get(position).getMangaImage(), 100, 100);
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final String mangaName = mangaList.get(position).getMangaTitle();
+
         CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(mangaName);
-
-        loadBackdrop();
+       // collapsingToolbar.setCollapsedTitleTextAppearance(R.style.MyTextAppearance);
+        loadBackdrop( mangaImage);
     }
 
-    private void loadBackdrop() {
+    private void loadBackdrop(Bitmap mangaImage) {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        imageView.setImageResource(R.drawable.no_image_found_grey);
+        imageView.setImageBitmap(mangaImage);
+//        WebView view = (WebView) findViewById(R.id.mangaContent);
+//        String text;
+//        text = "<html><body><p align=\"justify\">";
+//        text+= getResources().getString(R.string.manga_desc);
+//        text+= "</p></body></html>";
+//        view.loadData(text, "text/html", "utf-8");
     }
 
     @Override
