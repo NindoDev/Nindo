@@ -4,18 +4,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.GravityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.nindo.manga.reader.R;
-import com.nindo.manga.reader.cache_bitmaps.ImageDetailActivity;
 import com.nindo.manga.reader.data_model.Manga;
-import com.nindo.manga.reader.home.HomeListViewFragment;
 import com.nindo.manga.reader.network_request.RequestManagaDetails;
 
 import java.util.List;

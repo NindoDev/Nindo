@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.home;
+package com.nindo.manga.reader.home_activity;
 
 /**
  * Created by NindoDev on 9/26/2015.
@@ -6,7 +6,6 @@ package com.nindo.manga.reader.home;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -27,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nindo.manga.reader.R;
+import com.nindo.manga.reader.recent_manga.RecentFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,8 +90,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeListViewFragment(), "Recent");
-        adapter.addFragment(new HomeListViewFragment(), "Favourite");
+        adapter.addFragment(new RecentFragment(), "Recent");
+        adapter.addFragment(new RecentFragment(), "Favourite");
         viewPager.setAdapter(adapter);
     }
 
