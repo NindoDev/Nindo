@@ -90,8 +90,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new HomeListViewFragment(), "Popular");
-        adapter.addFragment(new HomeListViewFragment(), "New");
+        adapter.addFragment(new HomeListViewFragment(), "Recent");
+        adapter.addFragment(new HomeListViewFragment(), "Favourite");
         viewPager.setAdapter(adapter);
     }
 

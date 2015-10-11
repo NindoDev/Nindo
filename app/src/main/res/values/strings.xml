@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Nindo</string>
+    <string name="app_name">SpaceNerd</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -8,12 +8,12 @@
     <string name="txt_navigation_view">NavigationView</string>
     <string name="txt_other">Other</string>
     <string name="txt_yo_yo">Test</string>
-    <string name="title_activity_code_lab">Nindo</string>
+    <string name="title_activity_code_lab">SpaceNerd</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="password_hint">********</string>
     <string name="email_id_hint">Email-id</string>
     <string name="login">Login</string>
-    <string name="manga_desc">\t\tGats, known as the Black Swordsman, seeks sanctuary from the demonic forces attracted to him and his woman because of a demonic mark on their necks, and also vengeance against the man who branded him as an unholy sacrifice. Aided only by his titanic strength gained from a harsh childhood lived with mercenaries, a gigantic sword, and an iron prosthetic left hand, Gats must struggle against his bleak destiny, all the while fighting with a rage that might strip him of his humanity.\n\n\t\tThe 1988 Prototype chapter won a prize at the Comi Manga School Miura attended and the main series won the Tezuka Osamu Award for Excellence in 2002.\n\n\t\tMiura premiered a prototype of Berserk in 1988. The first volume of the manga was published on November 26, 1990 by Hakusensha in its Jets Comics collection. In 1992, after the publication of three more volumes, Berserk began serialization in Young Animal. The series was adapted into a twenty-five episode anime series covering the series\' first story arc by Oriental Light and Magic from October 7, 1997 to March 31, 1998. A series of films, Berserk: The Golden Age Arc, were released beginning in 2012.
-</string>
+    <!--<string name="manga_desc">\t\tGats, known as the Black Swordsman, seeks sanctuary from the demonic forces attracted to him and his woman because of a demonic mark on their necks, and also vengeance against the man who branded him as an unholy sacrifice. Aided only by his titanic strength gained from a harsh childhood lived with mercenaries, a gigantic sword, and an iron prosthetic left hand, Gats must struggle against his bleak destiny, all the while fighting with a rage that might strip him of his humanity.\n\n\t\tThe 1988 Prototype chapter won a prize at the Comi Manga School Miura attended and the main series won the Tezuka Osamu Award for Excellence in 2002.\n\n\t\tMiura premiered a prototype of Berserk in 1988. The first volume of the manga was published on November 26, 1990 by Hakusensha in its Jets Comics collection. In 1992, after the publication of three more volumes, Berserk began serialization in Young Animal. The series was adapted into a twenty-five episode anime series covering the series\' first story arc by Oriental Light and Magic from October 7, 1997 to March 31, 1998. A series of films, Berserk: The Golden Age Arc, were released beginning in 2012.-->
+    <string name="manga_desc">\t\tDark narrow streaks, called "recurring slope lineae,\" emanate from the walls of Garni Crater on Mars, in this view constructed from observations by the High Resolution Imaging Science Experiment (HiRISE) camera on NASA\'s Mars Reconnaissance Orbiter. The dark streaks here are up to few hundred yards, or meters, long. They are hypothesized to be formed by flow of briny liquid water on Mars.\n\n\t\tThe image was produced by first creating a 3-D computer model (a digital terrain map) of the area based on stereo information from two HiRISE observations, and then draping an image over the land-shape model. The vertical dimension is exaggerated by a factor of 1.5 compared to horizontal dimensions. The draped image is a red waveband (monochrome) product from HiRISE observation ESP_031059_1685, taken on March 12, 2013 at 11.5 degrees south latitude, 290.3 degrees east longitude. Other image products from this observation are at http://hirise.lpl.arizona.edu/ESP_031059_1685.\nThe University of Arizona, Tucson, operas HiRISE, which was built by Ball Aerospace Technologies Corp., Boulder, Colorado. NASA\'s Jet Propulsion Laboratory, a division of the California Institute of Technology in Pasadena, manages the Mars Reconnaissance Orbiter Project and Mars Science Laboratory Project for NASA\'s Science Mission Directorate, Washington.</string>
 </resources>
