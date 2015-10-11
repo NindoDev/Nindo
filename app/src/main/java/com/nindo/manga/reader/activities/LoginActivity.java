@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.login_activity;
+package com.nindo.manga.reader.activities;
 
 /**
  * Created by NindoDev on 9/26/2015.
@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.nindo.manga.reader.R;
-import com.nindo.manga.reader.home_activity.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

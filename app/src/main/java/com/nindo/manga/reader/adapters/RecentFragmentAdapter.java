@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.recent_manga;
+package com.nindo.manga.reader.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.nindo.manga.reader.R;
 import com.nindo.manga.reader.data_model.Manga;
-import com.nindo.manga.reader.manga_details.MangaDetailsActivity;
+import com.nindo.manga.reader.activities.MangaDetailsActivity;
 
 import java.util.List;
 
@@ -48,9 +48,7 @@ public class RecentFragmentAdapter
         }
     }
 
-//        public String getValueAt(int position) {
-//            return mValues.get(position);
-//        }
+
 
     public RecentFragmentAdapter(Context context, List<Manga> mangaItems) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);

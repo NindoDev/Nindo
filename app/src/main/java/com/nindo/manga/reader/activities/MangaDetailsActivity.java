@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.manga_details;
+package com.nindo.manga.reader.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

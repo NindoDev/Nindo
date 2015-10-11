@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.recent_manga;
+package com.nindo.manga.reader.fargments;
 
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
@@ -13,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.nindo.manga.reader.R;
 import com.nindo.manga.reader.network_request.RequestManagaDetails;
 import com.nindo.manga.reader.network_request.VolleySingleton;
+import com.nindo.manga.reader.adapters.RecentFragmentAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +52,6 @@ public class RecentFragment extends Fragment {
        // volleySingleton.addToRequestQueue(stringRequest);
     }
 
-    private List<String> getRandomSublist(String[] array, int amount) {
-        ArrayList<String> list = new ArrayList<>(amount);
-        Random random = new Random();
-        while (list.size() < amount) {
-            list.add(array[random.nextInt(array.length)]);
-        }
-        return list;
-    }
 
 
 
