@@ -22,14 +22,16 @@ public class RequestManagaDetails {
     public static List<Manga> getMangaList() {
         mangaList = new ArrayList<>();
         //For simulation inject resources from drawable
-        mangaList.add(new Manga(1, mangaNames[0], R.drawable.one, "Long Description"));
-        mangaList.add(new Manga(2, mangaNames[1], R.drawable.two, "Long Description"));
-        mangaList.add(new Manga(3, mangaNames[2], R.drawable.three, "Long Description"));
-        mangaList.add(new Manga(4, mangaNames[3], R.drawable.four, "Long Description"));
-        mangaList.add(new Manga(5, mangaNames[4], R.drawable.five, "Long Description"));
-        mangaList.add(new Manga(6, mangaNames[5], R.drawable.six, "Long Description"));
+//        mangaList.add(new Manga(1, mangaNames[0], R.drawable.one, "Long Description"));
+//        mangaList.add(new Manga(2, mangaNames[1], R.drawable.two, "Long Description"));
+//        mangaList.add(new Manga(3, mangaNames[2], R.drawable.three, "Long Description"));
+//        mangaList.add(new Manga(4, mangaNames[3], R.drawable.four, "Long Description"));
+//        mangaList.add(new Manga(5, mangaNames[4], R.drawable.five, "Long Description"));
+//        mangaList.add(new Manga(6, mangaNames[5], R.drawable.six, "Long Description"));
 
         return mangaList;
     }
+
+
 
 }

@@ -1,39 +1,62 @@
 package com.nindo.manga.reader.data_model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by NindoDev on 9/29/2015.
  */
 public class Manga {
-    private int mangaId;
-    private String mangaTitle;
 
-    public int getMangaImage() {
-        return mangaImage;
+    private String url;
+
+    private String mediaType;
+
+    private String explanation;
+
+    private List<String> concepts = new ArrayList<String>();
+
+    private String title;
+
+    public String getUrl() {
+        return url;
     }
 
-    private int mangaImage;
-    private String mangaDescription;
-
-    public Manga(int mangaId, String mangaTitle, int mangaImage, String mangaDescription) {
-        this.mangaId = mangaId;
-        this.mangaTitle = mangaTitle;
-        this.mangaImage = mangaImage;
-        this.mangaDescription = mangaDescription;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public int getMangaId() {
-        return mangaId;
+    public String getMediaType() {
+        return mediaType;
     }
 
-
-    public String getMangaTitle() {
-        return mangaTitle;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
-
-    public String getMangaDescription() {
-        return mangaDescription;
+    public String getExplanation() {
+        return explanation;
     }
 
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public List<String> getConcepts() {
+        return concepts;
+    }
+
+    public void setConcepts(List<String> concepts) {
+        this.concepts = concepts;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
 }
+

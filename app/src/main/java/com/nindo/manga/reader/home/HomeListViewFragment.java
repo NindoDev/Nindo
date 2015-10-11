@@ -108,8 +108,8 @@ public class HomeListViewFragment extends Fragment {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-            holder.mImage = ImageDetailActivity.decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100);
-            holder.mTextView.setText(mValues.get(position).getMangaTitle());
+           // holder.mImage = ImageDetailActivity.decodeSampledBitmapFromResource(res, mValues.get(position).getMangaImage(), 100, 100);
+           // holder.mTextView.setText(mValues.get(position).getMangaTitle());
             holder.mImageView.setImageBitmap(holder.mImage);
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
