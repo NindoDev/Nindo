@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.nindo.manga.reader.R;
 import com.nindo.manga.reader.data_model.Manga;
 import com.nindo.manga.reader.activities.MangaDetailsActivity;
+import com.nindo.manga.reader.interfaces.RecyclerViewClickListenerInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +27,8 @@ public class RecentFragmentAdapter
 
     private final TypedValue mTypedValue = new TypedValue();
     private int mBackground;
-    public List<Manga> mValues;
+    private List<Manga> mValues = new ArrayList<>();
+    private RecyclerViewClickListenerInterface recyclerViewClickListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public String mBoundString;
@@ -50,10 +53,9 @@ public class RecentFragmentAdapter
 
 
 
-    public RecentFragmentAdapter(Context context, List<Manga> mangaItems) {
+    public RecentFragmentAdapter(Context context) {
         context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
         mBackground = mTypedValue.resourceId;
-        mValues = mangaItems;
     }
 
     @Override
@@ -84,5 +86,9 @@ public class RecentFragmentAdapter
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void setRecyclerViewClickListener(RecyclerViewClickListenerInterface recyclerViewClickListener) {
+        this.recyclerViewClickListener = recyclerViewClickListener;
     }
 }

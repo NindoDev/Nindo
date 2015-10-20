@@ -58,5 +58,15 @@ public class Manga {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return "Manga{" +
+                "url='" + url + '\'' +
+                ", mediaType='" + mediaType + '\'' +
+                ", explanation='" + explanation + '\'' +
+                ", concepts=" + concepts +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
 

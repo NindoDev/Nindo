@@ -1,4 +1,4 @@
-package com.nindo.manga.reader.fargments;
+package com.nindo.manga.reader.fragments;
 
 /**
  * Created by NindoDev on 10/11/2015.
